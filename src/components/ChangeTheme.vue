@@ -1,7 +1,7 @@
 <template>
     <div>
         <label class="theme-switch">
-            <input type="checkbox" class="theme-switch__checkbox" @change="changeTheme" :checked="$q.dark.isActive">
+            <input type="checkbox" class="theme-switch__checkbox" @input="changeTheme" :checked="$q.dark.isActive">
             <div class="theme-switch__container">
                 <div class="theme-switch__clouds"></div>
                 <div class="theme-switch__stars-container">
