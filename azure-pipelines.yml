@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- script: |
+    git branch -a
+    git checkout main || git checkout -b main
+    git config --global user.name "Natan Veloso - Azure"
+    git config --global user.email "natan.yapo@hotmail.com"
+    git remote add github https://$(GITHUB_USER):$(GITHUB_TOKEN)@github.com/$(GITHUB_USER)/$(GITHUB_REPO).git
+    git fetch github main
+    git pull github main --rebase
+    git push github main:main
+  displayName: 'Pull and Push to GitHub'
