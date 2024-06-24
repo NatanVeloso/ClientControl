@@ -3,6 +3,7 @@
         <q-card class="col-12">
             <q-card-section>
                 <q-input label="nome" v-model="nome"></q-input>
+                <q-btn label="trocar tema" @click="teste"></q-btn>
             </q-card-section>
         </q-card>
     </div>
@@ -17,7 +18,9 @@ import { Component, toNative, Vue } from 'vue-facing-decorator';
 export class HomePage extends Vue {
     nome: string | null = null
 
-    
+    teste() {
+        this.$q.dark.toggle();
+    }
 
     created() {
         this.$q.loading.hide();
